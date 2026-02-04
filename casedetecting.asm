@@ -1,17 +1,34 @@
 section .data
+    iprompt db "Enter Character "
+    ipromptlen equ $ -iprompt
     prompt db "The Character is "
     promptlen equ $ -prompt
-    char db "R"
-    charlen equ $ -char
+;    char db "R"
+;    charlen equ $ -char
     lower db "Lowercase"
     lowerlen equ $ -lower
     upper db "Uppercase"
     upperlen equ $ -upper
 
+section .bss
+    char: resb 1
+
 section .text
     global _start
 
 _start:
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, iprompt
+    mov rdx, ipromptlen
+    syscall
+
+    mov rax, 0
+    mov rdi, 1
+    mov rsi, char
+    mov rdx, 1
+    syscall
+
     mov rax, 1
     mov rdi, 1
     mov rsi, prompt
