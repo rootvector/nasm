@@ -6,4 +6,6 @@ ld executables/$2.o -o executables/$2
 
 echo ""
 echo "[*] Exetuting executables/$2...."
+echo ""
+echo ""
 ./executables/$2
